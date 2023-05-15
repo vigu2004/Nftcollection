@@ -266,7 +266,7 @@ export default function Home() {
     }
 
     
-    if (isOwner && !presaleStarted) {
+    if (isOwner && !presalestarted) {
       return (
         <button className={styles.button} onClick={startPresale}>
           Start Presale!
@@ -275,7 +275,7 @@ export default function Home() {
     }
 
     
-    if (!presaleStarted) {
+    if (!presalestarted) {
       return (
         <div>
           <div className={styles.description}>Presale hasn&#39;t started!</div>
@@ -284,7 +284,7 @@ export default function Home() {
     }
 
     
-    if (presaleStarted && !presaleEnded) {
+    if (presalestarted && !presaleEnded) {
       return (
         <div>
           <div className={styles.description}>
@@ -299,7 +299,7 @@ export default function Home() {
     }
 
     
-    if (presaleStarted && presaleEnded) {
+    if (presalestarted && presaleEnded) {
       return (
         <button className={styles.button} onClick={publicMint}>
           Public Mint 🚀
