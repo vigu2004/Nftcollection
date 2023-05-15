@@ -9,8 +9,8 @@ import styles from "../styles/Home.module.css";
 export default function Home() {
   // walletConnected keep track of whether the user's wallet is connected or not
   const [walletConnected, setWalletConnected] = useState(false);
-  // presaleStarted keeps track of whether the presale has started or not
-  const [presaleStarted, setPresaleStarted] = useState(false);
+  // presalestarted keeps track of whether the presale has started or not
+  const [presalestarted, setPresaleStarted] = useState(false);
   // presaleEnded keeps track of whether the presale ended
   const [presaleEnded, setPresaleEnded] = useState(false);
   // loading is set to true when we are waiting for a transaction to get mined
@@ -103,12 +103,12 @@ export default function Home() {
       const provider = await getProviderOrSigner();
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, provider);
      
-      const _presaleStarted = await nftContract.presaleStarted();
-      if (!_presaleStarted) {
+      const _presalestarted = await nftContract.presalestarted();
+      if (!_presalestarted) {
         await getOwner();
       }
-      setPresaleStarted(_presaleStarted);
-      return _presaleStarted;
+      setPresaleStarted(_presalestarted);
+      return _presalestarted;
     } catch (err) {
       console.error(err);
       return false;
@@ -224,8 +224,8 @@ export default function Home() {
       connectWallet();
 
       // Check if presale has started and ended
-      const _presaleStarted = checkIfPresaleStarted();
-      if (_presaleStarted) {
+      const _presalestarted = checkIfPresaleStarted();
+      if (_presalestarted) {
         checkIfPresaleEnded();
       }
 
@@ -233,8 +233,8 @@ export default function Home() {
 
       // Set an interval which gets called every 5 seconds to check presale has ended
       const presaleEndedInterval = setInterval(async function () {
-        const _presaleStarted = await checkIfPresaleStarted();
-        if (_presaleStarted) {
+        const _presalestarted = await checkIfPresaleStarted();
+        if (_presalestarted) {
           const _presaleEnded = await checkIfPresaleEnded();
           if (_presaleEnded) {
             clearInterval(presaleEndedInterval);
