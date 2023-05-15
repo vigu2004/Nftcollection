@@ -17,8 +17,8 @@ export default function Home() {
   const [loading, setLoading] = useState(false);
   // checks if the currently connected MetaMask wallet is the owner of the contract
   const [isOwner, setIsOwner] = useState(false);
-  // tokenIdsMinted keeps track of the number of tokenIds that have been minted
-  const [tokenIdsMinted, setTokenIdsMinted] = useState("0");
+  // tokenidsMinted keeps track of the number of tokenids that have been minted
+  const [tokenidsMinted, settokenidsMinted] = useState("0");
   // Create a reference to the Web3 Modal (used for connecting to Metamask) which persists as long as the page is open
   const web3ModalRef = useRef();
 
@@ -160,7 +160,7 @@ export default function Home() {
   };
 
   
-  const getTokenIdsMinted = async () => {
+  const gettokenidsMinted = async () => {
     try {
       
       const provider = await getProviderOrSigner();
@@ -168,9 +168,9 @@ export default function Home() {
       
       const nftContract = new Contract(NFT_CONTRACT_ADDRESS, abi, provider);
       
-      const _tokenIds = await nftContract.tokenIds();
+      const _tokenids = await nftContract.tokenids();
       
-      setTokenIdsMinted(_tokenIds.toString());
+      settokenidsMinted(_tokenids.toString());
     } catch (err) {
       console.error(err);
     }
@@ -229,7 +229,7 @@ export default function Home() {
         checkIfPresaleEnded();
       }
 
-      getTokenIdsMinted();
+      gettokenidsMinted();
 
       // Set an interval which gets called every 5 seconds to check presale has ended
       const presaleEndedInterval = setInterval(async function () {
@@ -244,7 +244,7 @@ export default function Home() {
 
       
       setInterval(async function () {
-        await getTokenIdsMinted();
+        await gettokenidsMinted();
       }, 5 * 1000);
     }
   }, [walletConnected]);
@@ -322,7 +322,7 @@ export default function Home() {
             It&#39;s an NFT collection for developers in Crypto.
           </div>
           <div className={styles.description}>
-            {tokenIdsMinted}/20 have been minted
+            {tokenidsMinted}/20 have been minted
           </div>
           {renderButton()}
         </div>
