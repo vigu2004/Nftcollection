@@ -32,7 +32,7 @@ export default function Home() {
       
       const tx = await nftContract.presaleMint({
         
-        value: utils.parseEther("0.01"),
+        value: utils.parseEther("0.1"),
       });
       setLoading(true);
       
@@ -54,7 +54,7 @@ export default function Home() {
       
       const tx = await nftContract.mint({
        
-        value: utils.parseEther("0.01"),
+        value: utils.parseEther("0.1"),
       });
       setLoading(true);
      
