@@ -56,7 +56,7 @@ uint256 public _price = 0.1 ether; //price of one crypto devs nft
 
         require(presalestarted && block.timestamp >= presaleEnded , "presale has not ended");
         require(tokenids<maxtokenids,"exceeded maximum Crypto Devs supply");
-        require(msg.value >=_price ,"Ehter sent is not correct");
+        require(msg.value >=_price ,"Ether sent is not correct");
         tokenids +=1;
 
         _safeMint(msg.sender , tokenids);
